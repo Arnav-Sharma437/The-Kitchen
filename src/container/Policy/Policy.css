@@ -1,0 +1,51 @@
+.app__policy {
+  background-color: var(--color-black);
+  padding: 4rem 6rem;
+}
+
+.app__policy-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app__policy-section {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.app__policy-section:last-child {
+  margin-bottom: 0;
+}
+
+.app__policy-section h1 {
+  margin-bottom: 1rem;
+}
+
+.app__policy-section .spoon__img {
+  margin: 1rem auto 2rem;
+  display: block;
+}
+
+.app__policy-section p {
+  text-align: justify;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 850px) {
+  .app__policy {
+    padding: 4rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .app__policy {
+    padding: 4rem 2rem;
+  }
+
+  .app__policy-section {
+    margin-bottom: 3rem;
+  }
+}

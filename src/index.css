@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap");
+
+:root {
+  --font-base: "Playfair", serif;
+  --font-alt: "Libre Franklin", sans-serif;
+
+  --color-golden: #dcca87;
+  --color-black: #3b0911;
+  --color-gray: #545454;
+  --color-crimson: #f5efdb;
+  --color-grey: #cccccc;
+  --color-white: #FAF0E6;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #3b0911;
+  color: #FAF0E6;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+.slide-bottom {
+  -webkit-animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-25%);
+    transform: translateY(-25%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-25%);
+    transform: translateY(-25%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
