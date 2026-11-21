@@ -18,6 +18,7 @@ import award03 from '../assets/award03.png';
 import award05 from '../assets/award05.png';
 import sign from '../assets/sign.png';
 import quote from '../assets/quote.png';
+import christmasMenu from '../assets/christmas-menu.jpg';
 
 // Using external logo URL
 const logo = 'https://ik.imagekit.io/mv3sctrmq/The%20kitchen%20chiswick/tk%20logo.png?updatedAt=1766680963653';
@@ -50,5 +51,6 @@ const images = {
   gericht,
   logoBackground,
   heroImage,
+  christmasMenu,
 };
 export default images;
