@@ -535,31 +535,119 @@ const SpecialMenu = () => {
     </div>
   );
 
-  // Render Christmas festive menu in exact same standard style
+  // Render Christmas festive menu with balanced alignment & mobile optimization
   const renderChristmasMenu = () => (
-    <div style={{ marginTop: '1rem', width: '100%' }}>
-      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <p className="app__specialMenu-menu_heading" style={{ marginBottom: '0.5rem' }}>
-          CHRISTMAS MENU
-        </p>
-        <p className="p__cormorant" style={{ color: '#DCCA87', fontSize: '26px', fontWeight: '600', marginBottom: '0.5rem' }}>
-          £44.90 PER PERSON
-        </p>
-        <p className="p__opensans" style={{ color: 'var(--color-grey)', fontSize: '15px', fontStyle: 'italic' }}>
+    <div className="christmas-menu-container">
+      {/* Christmas Header */}
+      <div className="christmas-menu-header">
+        <p className="app__specialMenu-menu_heading">CHRISTMAS MENU</p>
+        <p className="christmas-menu-price">£44.90 PER PERSON</p>
+        <p className="christmas-menu-tagline">
           (A Festive Celebration of Pan-Asian Flavours — Includes Four Courses &amp; A Welcome Drink)
         </p>
+        <div className="christmas-menu-divider" />
       </div>
 
-      {renderFoodSection('A FESTIVE WELCOME DRINK', christmasMenuData.welcomeDrink, 'Enjoy your choice of one drink')}
-      {renderFoodSection('COURSE ONE — TO BEGIN', christmasMenuData.courseOne)}
-      {renderFoodSection('COURSE TWO — STARTER', christmasMenuData.courseTwo, 'Choose one')}
-      {renderFoodSection('COURSE THREE — MAIN COURSE', christmasMenuData.courseThree, 'Choose one')}
-      {renderFoodSection('COURSE FOUR — DESSERT', christmasMenuData.courseFour, 'Choose one')}
+      {/* A Festive Welcome Drink */}
+      <div className="christmas-section">
+        <div className="christmas-section-header">
+          <p className="christmas-section-title">A Festive Welcome Drink</p>
+          <p className="christmas-section-desc">(Enjoy your choice of one drink)</p>
+        </div>
+        <div className="christmas-grid-2col">
+          {christmasMenuData.welcomeDrink.map((drink, index) => (
+            <div key={index} className="christmas-drink-card">
+              <p className="christmas-item-name">{drink.name}</p>
+              {drink.description && <p className="christmas-item-desc">{drink.description}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
 
-      <div style={{ textAlign: 'center', marginTop: '4rem', marginBottom: '1rem' }}>
-        <p className="p__opensans" style={{ color: 'var(--color-grey)', fontSize: '15px', fontStyle: 'italic' }}>
-          Celebrate the season with great food &amp; company
-        </p>
+      {/* Course One — To Begin */}
+      <div className="christmas-section">
+        <div className="christmas-section-header">
+          <p className="christmas-section-title">Course One — To Begin</p>
+        </div>
+        <div className="christmas-grid-1col">
+          {christmasMenuData.courseOne.map((item, index) => (
+            <div key={index} className="christmas-item-card">
+              <p className="christmas-item-name">{item.name}</p>
+              <p className="christmas-item-desc">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Course Two — Starter */}
+      <div className="christmas-section">
+        <div className="christmas-section-header">
+          <p className="christmas-section-title">Course Two — Starter</p>
+          <p className="christmas-section-desc">(Choose one)</p>
+        </div>
+        <div className="christmas-grid-2col">
+          {christmasMenuData.courseTwo.slice(0, 2).map((item, index) => (
+            <div key={index} className="christmas-item-card">
+              <p className="christmas-item-name">
+                {item.name}
+                {item.isVegetarian && <span className="christmas-item-veg">(V)</span>}
+              </p>
+              <p className="christmas-item-desc">{item.description}</p>
+            </div>
+          ))}
+          {/* Third item (Sushi Selection) centered across columns */}
+          {christmasMenuData.courseTwo.slice(2).map((item, index) => (
+            <div key={index} className="christmas-grid-full">
+              <div className="christmas-item-card">
+                <p className="christmas-item-name">
+                  {item.name}
+                  {item.isVegetarian && <span className="christmas-item-veg">(V)</span>}
+                </p>
+                <p className="christmas-item-desc">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Course Three — Main Course */}
+      <div className="christmas-section">
+        <div className="christmas-section-header">
+          <p className="christmas-section-title">Course Three — Main Course</p>
+          <p className="christmas-section-desc">(Choose one)</p>
+        </div>
+        <div className="christmas-grid-2col">
+          {christmasMenuData.courseThree.map((item, index) => (
+            <div key={index} className="christmas-item-card">
+              <p className="christmas-item-name">
+                {item.name}
+                {item.isVegetarian && <span className="christmas-item-veg">(V)</span>}
+              </p>
+              <p className="christmas-item-desc">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Course Four — Dessert */}
+      <div className="christmas-section">
+        <div className="christmas-section-header">
+          <p className="christmas-section-title">Course Four — Dessert</p>
+          <p className="christmas-section-desc">(Choose one)</p>
+        </div>
+        <div className="christmas-grid-2col">
+          {christmasMenuData.courseFour.map((item, index) => (
+            <div key={index} className="christmas-item-card">
+              <p className="christmas-item-name">{item.name}</p>
+              <p className="christmas-item-desc">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer Quote */}
+      <div className="christmas-menu-footer">
+        <p>&ldquo;Celebrate the season with great food &amp; company&rdquo;</p>
       </div>
     </div>
   );
@@ -621,17 +709,18 @@ const SpecialMenu = () => {
       </div>
 
       {/* Main Tabs */}
-      <div style={{ display: 'flex', gap: '2rem', marginTop: '3rem', marginBottom: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '1rem', marginTop: '2.5rem', marginBottom: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
         <button
           onClick={() => setMainTab('food')}
           style={{
-            padding: '1rem 2rem',
+            padding: '0.8rem 1.6rem',
             background: mainTab === 'food' ? '#DCCA87' : 'transparent',
             color: mainTab === 'food' ? '#3b0911' : '#DCCA87',
             border: '2px solid #DCCA87',
             cursor: 'pointer',
-            fontSize: '18px',
+            fontSize: '16px',
             fontWeight: '600',
+            borderRadius: '4px',
             transition: 'all 0.3s ease'
           }}
         >
@@ -640,13 +729,14 @@ const SpecialMenu = () => {
         <button
           onClick={() => setMainTab('christmas')}
           style={{
-            padding: '1rem 2rem',
+            padding: '0.8rem 1.6rem',
             background: mainTab === 'christmas' ? '#DCCA87' : 'transparent',
             color: mainTab === 'christmas' ? '#3b0911' : '#DCCA87',
             border: '2px solid #DCCA87',
             cursor: 'pointer',
-            fontSize: '18px',
+            fontSize: '16px',
             fontWeight: '600',
+            borderRadius: '4px',
             transition: 'all 0.3s ease'
           }}
         >
@@ -655,13 +745,14 @@ const SpecialMenu = () => {
         <button
           onClick={() => setMainTab('desserts')}
           style={{
-            padding: '1rem 2rem',
+            padding: '0.8rem 1.6rem',
             background: mainTab === 'desserts' ? '#DCCA87' : 'transparent',
             color: mainTab === 'desserts' ? '#3b0911' : '#DCCA87',
             border: '2px solid #DCCA87',
             cursor: 'pointer',
-            fontSize: '18px',
+            fontSize: '16px',
             fontWeight: '600',
+            borderRadius: '4px',
             transition: 'all 0.3s ease'
           }}
         >
@@ -670,13 +761,14 @@ const SpecialMenu = () => {
         <button
           onClick={() => setMainTab('drinks')}
           style={{
-            padding: '1rem 2rem',
+            padding: '0.8rem 1.6rem',
             background: mainTab === 'drinks' ? '#DCCA87' : 'transparent',
             color: mainTab === 'drinks' ? '#3b0911' : '#DCCA87',
             border: '2px solid #DCCA87',
             cursor: 'pointer',
-            fontSize: '18px',
+            fontSize: '16px',
             fontWeight: '600',
+            borderRadius: '4px',
             transition: 'all 0.3s ease'
           }}
         >
