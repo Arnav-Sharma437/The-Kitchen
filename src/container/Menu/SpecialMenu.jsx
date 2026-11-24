@@ -1,93 +1,67 @@
 import React, { useState } from "react";
 
 import { SubHeading } from "../../components";
-import { images } from "../../constants";
 import "./SpecialMenu.css";
 
-// Christmas Festive Menu Data
+// Christmas Festive Menu Data (£44.90 Per Person)
 const christmasMenuData = {
-  price: '£44.90',
-  priceNote: 'PER PERSON',
-  subtitle: 'A Festive Celebration of Pan-Asian Flavours',
-  tagline: 'INCLUDING FOUR COURSES AND A WELCOME DRINK.',
-  footerQuote: 'Celebrate the season with great food & company',
-  welcomeDrink: {
-    title: 'A Festive Welcome Drink',
-    note: 'ENJOY YOUR CHOICE OF ONE DRINK',
-    items: [
-      { name: 'ANY COCKTAIL', icon: '🍸' },
-      { name: 'A GLASS OF HOUSE WINE', icon: '🍷' },
-      { name: 'ANY MOCKTAIL', icon: '🍹' },
-      { name: 'MULLED WINE AND HOT TODDY', icon: '☕' },
-    ],
-  },
-  courseOne: {
-    title: 'Course One — To Begin',
-    items: [
-      {
-        name: 'PRAWN CRACKERS WITH EDAMAME',
-        description: 'Crispy prawn crackers served with Togarashi Sauce for a delightful crunch',
-      },
-    ],
-  },
-  courseTwo: {
-    title: 'Course Two — Starter',
-    note: 'CHOOSE ONE',
-    items: [
-      {
-        name: 'BANG BANG CAULIFLOWER WITH WAKAME SALAD',
-        description: 'Crispy golden cauliflower tossed in a creamy, spicy dynamite sauce',
-        isVegetarian: true,
-      },
-      {
-        name: 'BANG BANG CHICKEN WITH WAKAME SALAD',
-        description: 'Crispy golden chicken tossed in a creamy, spicy dynamite sauce.',
-      },
-      {
-        name: 'SUSHI SELECTION — 6 PIECES',
-        description: 'A delightful selection of six freshly prepared sushi rolls, available in vegetarian or non-vegetarian options.',
-        extraTag: 'Vegetarian or Non-Vegetarian',
-      },
-    ],
-  },
-  courseThree: {
-    title: 'Course Three — Main Course',
-    note: 'CHOOSE ONE',
-    items: [
-      {
-        name: 'CHICKEN INASAL',
-        description: 'Grilled chicken marinated in calamansi, garlic, ginger and annatto, basted with aromatic oil and served with Japanese rice and salad',
-      },
-      {
-        name: 'CAULIFLOWER STEAK (VEG)',
-        description: 'Whole roasted cauliflower crown served with vinaigrette and house sauce',
-        isVegetarian: true,
-      },
-      {
-        name: 'BEEF TERIYAKI',
-        description: 'Succulent beef cooked to perfection, coated in sweet teriyaki sauce',
-      },
-      {
-        name: 'TOFU TERIYAKI',
-        description: 'Crispy tofu in a savoury teriyaki glaze',
-        isVegetarian: true,
-      },
-    ],
-  },
-  courseFour: {
-    title: 'Course Four — Dessert',
-    note: 'CHOOSE ONE',
-    items: [
-      {
-        name: 'MOCHI',
-        description: 'Choice of flavours: Strawberry, Coconut, Mango, or Chocolate. Soft, chewy rice flour dough filled with a sweet, creamy centre.',
-      },
-      {
-        name: 'TIRAMISU',
-        description: 'A classic Italian dessert with layers of coffee-soaked sponge, mascarpone, and cocoa dusting.',
-      },
-    ],
-  },
+  welcomeDrink: [
+    { name: 'ANY COCKTAIL', description: 'Your choice of handcrafted cocktail' },
+    { name: 'A GLASS OF HOUSE WINE', description: 'Red, white, or rosé' },
+    { name: 'ANY MOCKTAIL', description: 'Refreshing non-alcoholic cocktail' },
+    { name: 'MULLED WINE AND HOT TODDY', description: 'Warm festive seasonal beverage' },
+  ],
+  courseOne: [
+    {
+      name: 'PRAWN CRACKERS WITH EDAMAME',
+      description: 'Crispy prawn crackers served with Togarashi Sauce for a delightful crunch',
+    },
+  ],
+  courseTwo: [
+    {
+      name: 'BANG BANG CAULIFLOWER WITH WAKAME SALAD',
+      description: 'Crispy golden cauliflower tossed in a creamy, spicy dynamite sauce',
+      isVegetarian: true,
+    },
+    {
+      name: 'BANG BANG CHICKEN WITH WAKAME SALAD',
+      description: 'Crispy golden chicken tossed in a creamy, spicy dynamite sauce',
+    },
+    {
+      name: 'SUSHI SELECTION — 6 PIECES',
+      description: 'A delightful selection of six freshly prepared sushi rolls, available in vegetarian or non-vegetarian options',
+    },
+  ],
+  courseThree: [
+    {
+      name: 'CHICKEN INASAL',
+      description: 'Grilled chicken marinated in calamansi, garlic, ginger and annatto, basted with aromatic oil and served with Japanese rice and salad',
+    },
+    {
+      name: 'CAULIFLOWER STEAK (VEG)',
+      description: 'Whole roasted cauliflower crown served with vinaigrette and house sauce',
+      isVegetarian: true,
+    },
+    {
+      name: 'BEEF TERIYAKI',
+      description: 'Succulent beef cooked to perfection, coated in sweet teriyaki sauce',
+    },
+    {
+      name: 'TOFU TERIYAKI',
+      description: 'Crispy tofu in a savoury teriyaki glaze',
+      isVegetarian: true,
+    },
+  ],
+  courseFour: [
+    {
+      name: 'MOCHI',
+      description: 'Choice of flavours: Strawberry, Coconut, Mango, or Chocolate. Soft, chewy rice flour dough filled with a sweet, creamy centre',
+    },
+    {
+      name: 'TIRAMISU',
+      description: 'A classic Italian dessert with layers of coffee-soaked sponge, mascarpone, and cocoa dusting',
+    },
+  ],
 };
 
 // Food Menu Data
@@ -519,8 +493,6 @@ const SpecialMenu = () => {
   const [mainTab, setMainTab] = useState('christmas'); // 'christmas', 'food', 'desserts', or 'drinks'
   const [foodSubTab, setFoodSubTab] = useState('starters'); // for food subtabs
   const [drinksSubTab, setDrinksSubTab] = useState('white-wines'); // for drinks subtabs
-  const [showFlyerModal, setShowFlyerModal] = useState(false);
-  const [showBookingModal, setShowBookingModal] = useState(false);
 
   // Render a simple menu item
   const renderMenuItem = (item, index) => (
@@ -559,6 +531,35 @@ const SpecialMenu = () => {
             {renderMenuItem(item, index)}
           </div>
         ))}
+      </div>
+    </div>
+  );
+
+  // Render Christmas festive menu in exact same standard style
+  const renderChristmasMenu = () => (
+    <div style={{ marginTop: '1rem', width: '100%' }}>
+      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <p className="app__specialMenu-menu_heading" style={{ marginBottom: '0.5rem' }}>
+          CHRISTMAS MENU
+        </p>
+        <p className="p__cormorant" style={{ color: '#DCCA87', fontSize: '26px', fontWeight: '600', marginBottom: '0.5rem' }}>
+          £44.90 PER PERSON
+        </p>
+        <p className="p__opensans" style={{ color: 'var(--color-grey)', fontSize: '15px', fontStyle: 'italic' }}>
+          (A Festive Celebration of Pan-Asian Flavours — Includes Four Courses &amp; A Welcome Drink)
+        </p>
+      </div>
+
+      {renderFoodSection('A FESTIVE WELCOME DRINK', christmasMenuData.welcomeDrink, 'Enjoy your choice of one drink')}
+      {renderFoodSection('COURSE ONE — TO BEGIN', christmasMenuData.courseOne)}
+      {renderFoodSection('COURSE TWO — STARTER', christmasMenuData.courseTwo, 'Choose one')}
+      {renderFoodSection('COURSE THREE — MAIN COURSE', christmasMenuData.courseThree, 'Choose one')}
+      {renderFoodSection('COURSE FOUR — DESSERT', christmasMenuData.courseFour, 'Choose one')}
+
+      <div style={{ textAlign: 'center', marginTop: '4rem', marginBottom: '1rem' }}>
+        <p className="p__opensans" style={{ color: 'var(--color-grey)', fontSize: '15px', fontStyle: 'italic' }}>
+          Celebrate the season with great food &amp; company
+        </p>
       </div>
     </div>
   );
@@ -620,25 +621,7 @@ const SpecialMenu = () => {
       </div>
 
       {/* Main Tabs */}
-      <div style={{ display: 'flex', gap: '1.2rem', marginTop: '3rem', marginBottom: '2.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-        <button
-          onClick={() => setMainTab('christmas')}
-          style={{
-            padding: '1rem 2rem',
-            background: mainTab === 'christmas' ? '#C4151C' : 'transparent',
-            color: mainTab === 'christmas' ? '#FFFFFF' : '#E8A87C',
-            border: '2px solid #C4151C',
-            cursor: 'pointer',
-            fontSize: '18px',
-            fontWeight: '700',
-            letterSpacing: '1px',
-            borderRadius: '4px',
-            boxShadow: mainTab === 'christmas' ? '0 0 15px rgba(196, 21, 28, 0.6)' : 'none',
-            transition: 'all 0.3s ease'
-          }}
-        >
-          🎄 CHRISTMAS MENU
-        </button>
+      <div style={{ display: 'flex', gap: '2rem', marginTop: '3rem', marginBottom: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
         <button
           onClick={() => setMainTab('food')}
           style={{
@@ -649,11 +632,25 @@ const SpecialMenu = () => {
             cursor: 'pointer',
             fontSize: '18px',
             fontWeight: '600',
-            borderRadius: '4px',
             transition: 'all 0.3s ease'
           }}
         >
           FOOD MENU
+        </button>
+        <button
+          onClick={() => setMainTab('christmas')}
+          style={{
+            padding: '1rem 2rem',
+            background: mainTab === 'christmas' ? '#DCCA87' : 'transparent',
+            color: mainTab === 'christmas' ? '#3b0911' : '#DCCA87',
+            border: '2px solid #DCCA87',
+            cursor: 'pointer',
+            fontSize: '18px',
+            fontWeight: '600',
+            transition: 'all 0.3s ease'
+          }}
+        >
+          CHRISTMAS MENU
         </button>
         <button
           onClick={() => setMainTab('desserts')}
@@ -665,7 +662,6 @@ const SpecialMenu = () => {
             cursor: 'pointer',
             fontSize: '18px',
             fontWeight: '600',
-            borderRadius: '4px',
             transition: 'all 0.3s ease'
           }}
         >
@@ -681,7 +677,6 @@ const SpecialMenu = () => {
             cursor: 'pointer',
             fontSize: '18px',
             fontWeight: '600',
-            borderRadius: '4px',
             transition: 'all 0.3s ease'
           }}
         >
@@ -690,162 +685,7 @@ const SpecialMenu = () => {
       </div>
 
       {/* Christmas Menu Content */}
-      {mainTab === 'christmas' && (
-        <div className="christmas-menu-wrapper">
-          {/* Festive Banner Card */}
-          <div className="christmas-hero-card">
-            <p className="p__opensans" style={{ color: '#DCCA87', letterSpacing: '4px', fontSize: '14px', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-              ✦ {christmasMenuData.subtitle} ✦
-            </p>
-            <h2 className="headtext__cormorant" style={{ color: '#FFFFFF', fontSize: '56px', margin: '0.2rem 0 0.8rem' }}>
-              Christmas Menu
-            </h2>
-            <div style={{ width: '80px', height: '2px', background: '#DCCA87', margin: '0 auto 1.5rem' }} />
-
-            {/* Price Badge */}
-            <div className="christmas-price-badge">
-              {christmasMenuData.price} <span style={{ fontSize: '15px', fontWeight: '400', opacity: 0.9 }}>{christmasMenuData.priceNote}</span>
-            </div>
-
-            <p className="p__opensans" style={{ color: '#DCCA87', fontSize: '15px', letterSpacing: '2px', textTransform: 'uppercase', margin: '0.8rem 0 1.8rem', fontWeight: '600' }}>
-              {christmasMenuData.tagline}
-            </p>
-
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <button
-                type="button"
-                className="christmas-action-btn"
-                onClick={() => setShowBookingModal(true)}
-                style={{ background: '#C4151C', color: '#FFFFFF', border: '2px solid #C4151C', boxShadow: '0 4px 15px rgba(196,21,28,0.4)' }}
-              >
-                Book Christmas Table
-              </button>
-              <button
-                type="button"
-                className="christmas-action-btn"
-                onClick={() => setShowFlyerModal(true)}
-                style={{ background: 'transparent', border: '2px solid #DCCA87', color: '#DCCA87' }}
-              >
-                View Menu Flyer 📄
-              </button>
-            </div>
-          </div>
-
-          {/* Welcome Drink */}
-          <div className="christmas-course-card">
-            <div className="christmas-course-header">
-              <h3 className="christmas-course-title">{christmasMenuData.welcomeDrink.title}</h3>
-              <p className="christmas-course-note">{christmasMenuData.welcomeDrink.note}</p>
-            </div>
-            <div className="christmas-drink-grid">
-              {christmasMenuData.welcomeDrink.items.map((drink, i) => (
-                <div key={i} className="christmas-drink-item">
-                  <span style={{ fontSize: '26px', display: 'block', marginBottom: '0.5rem' }}>{drink.icon}</span>
-                  <p className="p__cormorant" style={{ color: '#FFFFFF', fontSize: '19px', fontWeight: '600', margin: 0 }}>
-                    {drink.name}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Course One - To Begin */}
-          <div className="christmas-course-card">
-            <div className="christmas-course-header">
-              <h3 className="christmas-course-title">{christmasMenuData.courseOne.title}</h3>
-            </div>
-            <div style={{ maxWidth: '650px', margin: '0 auto', textAlign: 'center' }}>
-              {christmasMenuData.courseOne.items.map((item, i) => (
-                <div key={i} className="christmas-item">
-                  <p className="christmas-item-title" style={{ justifyContent: 'center', color: '#DCCA87', fontSize: '24px' }}>
-                    {item.name}
-                  </p>
-                  <p className="christmas-item-desc" style={{ fontSize: '15px' }}>
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Course Two - Starter */}
-          <div className="christmas-course-card">
-            <div className="christmas-course-header">
-              <h3 className="christmas-course-title">{christmasMenuData.courseTwo.title}</h3>
-              <p className="christmas-course-note">{christmasMenuData.courseTwo.note}</p>
-            </div>
-            <div className="christmas-grid-3">
-              {christmasMenuData.courseTwo.items.map((item, i) => (
-                <div key={i} className="christmas-item" style={{ background: 'rgba(0,0,0,0.3)', padding: '1.2rem', borderRadius: '8px', border: '1px solid rgba(220, 202, 135, 0.1)' }}>
-                  <p className="christmas-item-title">
-                    <span>{item.name}</span>
-                    {item.isVegetarian && <span className="christmas-tag-veg">VEG</span>}
-                  </p>
-                  {item.extraTag && (
-                    <p className="p__opensans" style={{ color: '#DCCA87', fontSize: '12px', fontStyle: 'italic', margin: '0.2rem 0' }}>
-                      ({item.extraTag})
-                    </p>
-                  )}
-                  <p className="christmas-item-desc">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Course Three - Main Course */}
-          <div className="christmas-course-card">
-            <div className="christmas-course-header">
-              <h3 className="christmas-course-title">{christmasMenuData.courseThree.title}</h3>
-              <p className="christmas-course-note">{christmasMenuData.courseThree.note}</p>
-            </div>
-            <div className="christmas-grid-2">
-              {christmasMenuData.courseThree.items.map((item, i) => (
-                <div key={i} className="christmas-item" style={{ background: 'rgba(0,0,0,0.3)', padding: '1.2rem', borderRadius: '8px', border: '1px solid rgba(220, 202, 135, 0.1)' }}>
-                  <p className="christmas-item-title">
-                    <span>{item.name}</span>
-                    {item.isVegetarian && <span className="christmas-tag-veg">VEG</span>}
-                  </p>
-                  <p className="christmas-item-desc">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Course Four - Dessert */}
-          <div className="christmas-course-card">
-            <div className="christmas-course-header">
-              <h3 className="christmas-course-title">{christmasMenuData.courseFour.title}</h3>
-              <p className="christmas-course-note">{christmasMenuData.courseFour.note}</p>
-            </div>
-            <div className="christmas-grid-2">
-              {christmasMenuData.courseFour.items.map((item, i) => (
-                <div key={i} className="christmas-item" style={{ background: 'rgba(0,0,0,0.3)', padding: '1.2rem', borderRadius: '8px', border: '1px solid rgba(220, 202, 135, 0.1)' }}>
-                  <p className="christmas-item-title">{item.name}</p>
-                  <p className="christmas-item-desc">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Bottom Festive Slogan & CTA */}
-          <div style={{ textAlign: 'center', marginTop: '3rem', padding: '2rem 1rem' }}>
-            <p className="p__cormorant" style={{ color: '#DCCA87', fontSize: '32px', fontStyle: 'italic', marginBottom: '0.8rem' }}>
-              &ldquo;{christmasMenuData.footerQuote}&rdquo;
-            </p>
-            <p className="p__opensans" style={{ color: '#888', fontSize: '14px', marginBottom: '2rem' }}>
-              301 Chiswick High Rd., Chiswick, London W4 4HH
-            </p>
-            <button
-              type="button"
-              className="christmas-action-btn"
-              onClick={() => setShowBookingModal(true)}
-              style={{ background: '#C4151C', color: '#FFFFFF', border: '2px solid #C4151C', boxShadow: '0 4px 20px rgba(196,21,28,0.5)' }}
-            >
-              Reserve Your Table for Christmas
-            </button>
-          </div>
-        </div>
-      )}
+      {mainTab === 'christmas' && renderChristmasMenu()}
 
       {/* Food Menu Content */}
       {mainTab === 'food' && (
@@ -865,6 +705,7 @@ const SpecialMenu = () => {
           }}>
             {[
               { key: 'starters', label: 'Starters' },
+              { key: 'christmas', label: 'Christmas Menu' },
               { key: 'specials', label: 'Specials' },
               { key: 'bao-buns', label: 'Bao Buns' },
               { key: 'fried-rice', label: 'Fried Rice' },
@@ -907,6 +748,7 @@ const SpecialMenu = () => {
 
           {/* Food Content */}
           {foodSubTab === 'starters' && renderFoodSection('STARTERS (SMALLS)', foodMenuData.starters)}
+          {foodSubTab === 'christmas' && renderChristmasMenu()}
           {foodSubTab === 'specials' && renderFoodSection('SPECIALS', foodMenuData.specials)}
           {foodSubTab === 'bao-buns' && renderFoodSection('BAO BUNS', foodMenuData.baoBuns, 'Japanese steamed buns filled with house pickles, Asian slaw')}
           {foodSubTab === 'fried-rice' && renderFoodSection('FRIED RICE', foodMenuData.friedRice)}
@@ -1169,52 +1011,6 @@ const SpecialMenu = () => {
           View More
         </button>
       </div> */}
-
-      {/* Lightbox Modal for Flyer Image */}
-      {showFlyerModal && (
-        <div className="flyer-modal-overlay" onClick={() => setShowFlyerModal(false)}>
-          <div className="flyer-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="flyer-modal-close" onClick={() => setShowFlyerModal(false)}>
-              ×
-            </button>
-            <img src={images.christmasMenu} alt="The Kitchen Christmas Menu Flyer" />
-            <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <a
-                href={images.christmasMenu}
-                download="The-Kitchen-Christmas-Menu.jpg"
-                className="christmas-action-btn"
-                style={{ background: '#DCCA87', color: '#0C0C0C', textDecoration: 'none', display: 'inline-block' }}
-              >
-                Download Flyer 📥
-              </a>
-              <button
-                type="button"
-                className="christmas-action-btn"
-                onClick={() => { setShowFlyerModal(false); setShowBookingModal(true); }}
-                style={{ background: '#C4151C', color: '#FFFFFF', border: 'none' }}
-              >
-                Book Christmas Table
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* SevenRooms Booking Modal */}
-      {showBookingModal && (
-        <div className="booking-modal-overlay" onClick={() => setShowBookingModal(false)}>
-          <div className="booking-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="booking-modal-close" onClick={() => setShowBookingModal(false)}>
-              ×
-            </button>
-            <iframe
-              src="https://www.sevenrooms.com/explore/thekitchenchiswick/reservations/create/search/"
-              title="Book a Table"
-              className="booking-iframe"
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

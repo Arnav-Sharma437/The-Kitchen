@@ -26,25 +26,9 @@ const Header = () => {
       <div className="app__header-content">
         <SubHeading title="Chase the new flavour" />
         <h1 className="app__header-h1">The Key To Fine Dining</h1>
-        <p className="p__opensans" style={{ margin: "2rem 0 1rem" }}>
+        <p className="p__opensans" style={{ margin: "2rem 0" }}>
           Elevating Pan-Asian Dining to New Heights.
         </p>
-        <div style={{ marginBottom: "2rem", cursor: "pointer" }} onClick={scrollToMenu}>
-          <span style={{
-            display: 'inline-block',
-            background: 'rgba(196, 21, 28, 0.9)',
-            color: '#FFFFFF',
-            border: '1px solid #DCCA87',
-            padding: '0.6rem 1.5rem',
-            borderRadius: '30px',
-            fontSize: '15px',
-            fontWeight: '600',
-            letterSpacing: '0.5px',
-            boxShadow: '0 4px 15px rgba(196, 21, 28, 0.4)',
-          }}>
-            🎄 Christmas Menu Now Live — 4 Courses &amp; Drink £44.90 &rarr;
-          </span>
-        </div>
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           <button type="button" className="custom__button" onClick={scrollToMenu}>
             Explore Menu
