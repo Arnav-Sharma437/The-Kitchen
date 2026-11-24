@@ -230,6 +230,7 @@
 .christmas-item-card {
   width: 100%;
   margin: 0.5rem 0;
+  text-align: center;
 }
 
 .christmas-item-name {
@@ -239,6 +240,7 @@
   font-weight: 600;
   letter-spacing: 0.03em;
   line-height: 1.3;
+  text-align: center;
 }
 
 .christmas-item-veg {
@@ -254,6 +256,7 @@
   font-size: 14px;
   line-height: 1.6;
   margin-top: 0.4rem;
+  text-align: center;
 }
 
 /* Drink card */
@@ -267,6 +270,11 @@
 
 .christmas-drink-card .christmas-item-name {
   font-size: 18px;
+  text-align: center;
+}
+
+.christmas-drink-card .christmas-item-desc {
+  text-align: center;
 }
 
 .christmas-menu-footer {
@@ -281,6 +289,7 @@
   font-size: 15px;
   font-style: italic;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 /* Tablet & Mobile Breakpoints */
@@ -312,16 +321,21 @@
 
   .christmas-item-name {
     font-size: 19px;
+    text-align: center;
+  }
+
+  .christmas-item-desc {
+    text-align: center;
   }
 
   .christmas-grid-full .christmas-item-card,
   .christmas-grid-1col .christmas-item-card {
-    text-align: left;
+    text-align: center;
     max-width: 100%;
   }
 
   .christmas-drink-card {
-    text-align: left;
+    text-align: center;
     padding: 0.8rem;
   }
 }
