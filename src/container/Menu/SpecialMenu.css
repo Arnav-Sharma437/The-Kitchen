@@ -138,13 +138,47 @@
   line-height: 1.2;
 }
 
-.christmas-menu-price {
+.christmas-menu-price-wrapper {
+  margin: 1.2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.christmas-menu-price-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #a11624 0%, #750914 100%);
+  border: 2px solid #DCCA87;
+  border-radius: 50px;
+  padding: 0.75rem 2.8rem;
+  box-shadow: 0 4px 20px rgba(161, 22, 36, 0.5), 0 0 15px rgba(220, 202, 135, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.christmas-menu-price-badge:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(161, 22, 36, 0.65), 0 0 20px rgba(220, 202, 135, 0.35);
+}
+
+.christmas-menu-price-amount {
   font-family: var(--font-base);
-  color: #DCCA87;
-  font-size: 26px;
-  font-weight: 600;
+  color: #FFFFFF;
+  font-size: 36px;
+  font-weight: 700;
   letter-spacing: 1px;
-  margin: 0.5rem 0;
+  line-height: 1.1;
+}
+
+.christmas-menu-price-label {
+  font-family: var(--font-alt);
+  color: #DCCA87;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 3px;
 }
 
 .christmas-menu-tagline {
@@ -302,8 +336,17 @@
     font-size: 32px;
   }
 
-  .christmas-menu-price {
-    font-size: 22px;
+  .christmas-menu-price-badge {
+    padding: 0.6rem 2rem;
+  }
+
+  .christmas-menu-price-amount {
+    font-size: 28px;
+  }
+
+  .christmas-menu-price-label {
+    font-size: 11px;
+    letter-spacing: 2px;
   }
 
   .christmas-section {

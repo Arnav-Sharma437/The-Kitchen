@@ -541,7 +541,12 @@ const SpecialMenu = () => {
       {/* Christmas Header */}
       <div className="christmas-menu-header">
         <p className="app__specialMenu-menu_heading">CHRISTMAS MENU</p>
-        <p className="christmas-menu-price">£44.90 PER PERSON</p>
+        <div className="christmas-menu-price-wrapper">
+          <div className="christmas-menu-price-badge">
+            <span className="christmas-menu-price-amount">£44.90</span>
+            <span className="christmas-menu-price-label">PER PERSON</span>
+          </div>
+        </div>
         <p className="christmas-menu-tagline">
           (A Festive Celebration of Pan-Asian Flavours — Includes Four Courses &amp; A Welcome Drink)
         </p>
