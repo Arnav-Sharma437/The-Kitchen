@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { SubHeading } from "../../components";
 import "./SpecialMenu.css";
 
-// Christmas Festive Menu Data (£44.90 Per Person)
+// Christmas Festive Menu Data (£49.99 Per Person)
 const christmasMenuData = {
   welcomeDrink: [
     { name: 'ANY COCKTAIL', description: 'Your choice of handcrafted cocktail' },
@@ -14,52 +14,57 @@ const christmasMenuData = {
   courseOne: [
     {
       name: 'PRAWN CRACKERS WITH EDAMAME',
-      description: 'Crispy prawn crackers served with Togarashi Sauce for a delightful crunch',
+      description: 'Light and crispy prawn crackers served alongside seasoned edamame, with aromatic Japanese Togarashi seasoning for a delightful crunch.',
     },
   ],
-  courseTwo: [
-    {
-      name: 'BANG BANG CAULIFLOWER WITH WAKAME SALAD',
-      description: 'Crispy golden cauliflower tossed in a creamy, spicy dynamite sauce',
-      isVegetarian: true,
+  courseTwo: {
+    starters: [
+      {
+        name: 'BANG BANG CAULIFLOWER WITH WAKAME SALAD',
+        description: 'Crispy golden cauliflower tossed in a creamy, spicy Bang Bang sauce, served with a refreshing wakame seaweed salad.',
+        isVegetarian: true,
+      },
+      {
+        name: 'KING CRAB GUNKAN',
+        description: 'Delicate sushi rice wrapped in nori seaweed, generously topped with premium king crab.',
+      },
+      {
+        name: 'THE KITCHEN VEG TEMPURA',
+        description: 'A selection of fresh seasonal vegetables, lightly coated in a delicate tempura batter and fried until golden and crisp, served with a Japanese dipping sauce.',
+        isVegetarian: true,
+      },
+    ],
+    sushiSelection: {
+      tag: 'SUSHI SELECTION',
+      name: '10 PIECES OF OMAKASE SUSHI',
+      description: 'A carefully curated selection of ten premium sushi pieces, hand-prepared by our chefs using the freshest seasonal ingredients.',
     },
-    {
-      name: 'BANG BANG CHICKEN WITH WAKAME SALAD',
-      description: 'Crispy golden chicken tossed in a creamy, spicy dynamite sauce',
-    },
-    {
-      name: 'SUSHI SELECTION — 6 PIECES',
-      description: 'A delightful selection of six freshly prepared sushi rolls, available in vegetarian or non-vegetarian options',
-    },
-  ],
+  },
   courseThree: [
     {
-      name: 'CHICKEN INASAL',
-      description: 'Grilled chicken marinated in calamansi, garlic, ginger and annatto, basted with aromatic oil and served with Japanese rice and salad',
+      name: 'PEKING DUCK LEG',
+      description: 'A succulent duck leg, marinated with aromatic Chinese spices, slow-cooked until tender and finished with beautifully crisp skin, delivering a rich and authentic Peking-inspired flavour.',
     },
     {
-      name: 'CAULIFLOWER STEAK (VEG)',
-      description: 'Whole roasted cauliflower crown served with vinaigrette and house sauce',
+      name: 'CAULIFLOWER STEAK',
+      description: 'A whole roasted cauliflower steak, beautifully caramelised and served with a delicate vinaigrette and our house sauce.',
       isVegetarian: true,
+      vegLabel: '(VEG)',
     },
     {
       name: 'BEEF TERIYAKI',
-      description: 'Succulent beef cooked to perfection, coated in sweet teriyaki sauce',
+      description: 'Succulent beef expertly cooked and glazed in a rich, sweet and savoury Japanese teriyaki sauce.',
     },
     {
       name: 'TOFU TERIYAKI',
-      description: 'Crispy tofu in a savoury teriyaki glaze',
+      description: 'Crispy tofu coated in a delicious sweet and savoury teriyaki glaze, delivering a satisfying balance of texture and flavour.',
       isVegetarian: true,
     },
   ],
   courseFour: [
     {
-      name: 'MOCHI',
-      description: 'Choice of flavours: Strawberry, Coconut, Mango, or Chocolate. Soft, chewy rice flour dough filled with a sweet, creamy centre',
-    },
-    {
-      name: 'TIRAMISU',
-      description: 'A classic Italian dessert with layers of coffee-soaked sponge, mascarpone, and cocoa dusting',
+      name: 'SWEET CINNAMON BAO BUNS',
+      description: 'Soft, fluffy steamed bao buns infused with sweet cinnamon, served warm with vanilla ice cream.',
     },
   ],
 };
@@ -543,7 +548,7 @@ const SpecialMenu = () => {
         <p className="app__specialMenu-menu_heading">CHRISTMAS MENU</p>
         <div className="christmas-menu-price-wrapper">
           <div className="christmas-menu-price-badge">
-            <span className="christmas-menu-price-amount">£44.90</span>
+            <span className="christmas-menu-price-amount">£49.99</span>
             <span className="christmas-menu-price-label">PER PERSON</span>
           </div>
         </div>
@@ -590,28 +595,30 @@ const SpecialMenu = () => {
           <p className="christmas-section-title">Course Two — Starter</p>
           <p className="christmas-section-desc">(Choose one)</p>
         </div>
-        <div className="christmas-grid-2col">
-          {christmasMenuData.courseTwo.slice(0, 2).map((item, index) => (
+        <div className="christmas-grid-3col">
+          {christmasMenuData.courseTwo.starters.map((item, index) => (
             <div key={index} className="christmas-item-card">
               <p className="christmas-item-name">
                 {item.name}
-                {item.isVegetarian && <span className="christmas-item-veg">(V)</span>}
+                {item.isVegetarian && <span className="christmas-item-veg">{item.vegLabel || '(V)'}</span>}
               </p>
               <p className="christmas-item-desc">{item.description}</p>
             </div>
           ))}
-          {/* Third item (Sushi Selection) centered across columns */}
-          {christmasMenuData.courseTwo.slice(2).map((item, index) => (
-            <div key={index} className="christmas-grid-full">
-              <div className="christmas-item-card">
-                <p className="christmas-item-name">
-                  {item.name}
-                  {item.isVegetarian && <span className="christmas-item-veg">(V)</span>}
-                </p>
-                <p className="christmas-item-desc">{item.description}</p>
-              </div>
-            </div>
-          ))}
+        </div>
+        {/* Sushi Selection Highlight Box */}
+        <div className="christmas-sushi-box">
+          <span className="christmas-sushi-badge">
+            {christmasMenuData.courseTwo.sushiSelection.tag}
+          </span>
+          <div className="christmas-item-card">
+            <p className="christmas-item-name">
+              {christmasMenuData.courseTwo.sushiSelection.name}
+            </p>
+            <p className="christmas-item-desc">
+              {christmasMenuData.courseTwo.sushiSelection.description}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -626,7 +633,7 @@ const SpecialMenu = () => {
             <div key={index} className="christmas-item-card">
               <p className="christmas-item-name">
                 {item.name}
-                {item.isVegetarian && <span className="christmas-item-veg">(V)</span>}
+                {item.isVegetarian && <span className="christmas-item-veg">{item.vegLabel || '(V)'}</span>}
               </p>
               <p className="christmas-item-desc">{item.description}</p>
             </div>
@@ -640,7 +647,7 @@ const SpecialMenu = () => {
           <p className="christmas-section-title">Course Four — Dessert</p>
           <p className="christmas-section-desc">(Choose one)</p>
         </div>
-        <div className="christmas-grid-2col">
+        <div className="christmas-grid-1col">
           {christmasMenuData.courseFour.map((item, index) => (
             <div key={index} className="christmas-item-card">
               <p className="christmas-item-name">{item.name}</p>
@@ -652,7 +659,8 @@ const SpecialMenu = () => {
 
       {/* Footer Quote */}
       <div className="christmas-menu-footer">
-        <p>&ldquo;Celebrate the season with great food &amp; company&rdquo;</p>
+        <p className="christmas-menu-footer-badge">INCLUDING FOUR COURSES AND A WELCOME DRINK.</p>
+        <p className="christmas-menu-footer-quote">&ldquo;Celebrate the season with great food &amp; company&rdquo;</p>
       </div>
     </div>
   );

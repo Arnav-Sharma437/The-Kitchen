@@ -236,6 +236,15 @@
   box-sizing: border-box;
 }
 
+/* 3-column balanced grid for starters */
+.christmas-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 2.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* Single item centered */
 .christmas-grid-1col {
   display: flex;
@@ -258,6 +267,35 @@
 .christmas-grid-full .christmas-item-card {
   max-width: 600px;
   text-align: center;
+}
+
+/* Sushi Selection Box */
+.christmas-sushi-box {
+  margin-top: 2.5rem;
+  padding: 1.8rem 1rem 1.2rem;
+  text-align: center;
+  border-top: 1px dashed rgba(220, 202, 135, 0.35);
+  border-bottom: 1px dashed rgba(220, 202, 135, 0.35);
+}
+
+.christmas-sushi-badge {
+  display: inline-block;
+  font-family: var(--font-alt);
+  color: #DCCA87;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 5px 22px;
+  border: 1px solid rgba(220, 202, 135, 0.6);
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  background: rgba(220, 202, 135, 0.08);
+}
+
+.christmas-sushi-box .christmas-item-card {
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 /* Individual Item Card */
@@ -317,16 +355,34 @@
   margin-bottom: 2rem;
 }
 
-.christmas-menu-footer p {
+.christmas-menu-footer-badge {
   font-family: var(--font-alt);
+  color: #DCCA87;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.christmas-menu-footer-quote {
+  font-family: var(--font-base);
   color: var(--color-grey);
-  font-size: 15px;
+  font-size: 20px;
   font-style: italic;
   letter-spacing: 0.5px;
   text-align: center;
 }
 
 /* Tablet & Mobile Breakpoints */
+@media screen and (max-width: 850px) {
+  .christmas-grid-3col {
+    grid-template-columns: 1fr;
+    gap: 1.5rem 0;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .christmas-menu-container {
     padding: 0 0.5rem;
